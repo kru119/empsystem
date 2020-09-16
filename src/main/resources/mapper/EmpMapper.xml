@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.togogo.mapper.EmpMapper">
+    <select id="getEmpById" resultType="net.togogo.bean.Emp">
+        select * from emp where id=#{id}
+    </select>
+    <select id="getEmp" resultType="net.togogo.bean.Emp">
+        select * from emp
+    </select>
+    <select id="selectByName" resultType="net.togogo.bean.Emp">
+        select * from emp where name like CONCAT('%', #{name}, '%')
+    </select>
+    <delete id="deleteEmp">
+        delete from emp where id=#{id}
+    </delete>
+
+    <insert id="addEmp" parameterType="net.togogo.bean.Emp">
+        insert into emp (id, name, age, gender, birthday, phone, idcard)
+        values (#{id}, #{name}, #{age}, #{gender},
+                #{birthday}, #{phone}, #{idcard}
+               )
+    </insert>
+
+    <update id="updateEmp" parameterType="net.togogo.bean.Emp">
+        update emp
+        set name = #{name},
+            age = #{age},
+            gender = #{gender},
+            birthday = #{birthday},
+            phone = #{phone},
+            idcard = #{idcard}
+        where id = #{id}
+    </update>
+</mapper>

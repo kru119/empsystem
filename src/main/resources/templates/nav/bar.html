@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../static/iconfont/iconfont.css" th:href="@{/static/iconfont/iconfont.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+</head>
+<style>
+    .iconfont{
+        font-size: 50px;
+    }
+</style>
+
+<body>
+<nav class="navbar navbar-dark sticky-top bg-info flex-md-nowrap p-0" th:fragment="topbar">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">人才管理系统</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#" th:href="@{/logout}">退出</a>
+        </li>
+    </ul>
+</nav>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" id="sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column side-menu">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   th:class="${activeUri=='umain.html'?'nav-link active':'nav-link'}"
+                   href="#" th:href="@{/umain.html}">
+                    <span class="iconfont icon-home"></span>
+                    主页 <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/datatwo}"
+                   th:class="${activeUri=='datatwo'?'nav-link active':'nav-link'}">
+                    <span class="iconfont icon-home"></span>
+                    资料下载中心
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" id="sidebartwo">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column side-menu">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   th:class="${activeUri=='dmain.html'?'nav-link active':'nav-link'}"
+                   href="#" th:href="@{/dmain.html}">
+                    <span class="iconfont icon-home"></span>
+                    主页 <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#" th:href="@{/emplist}"
+                   th:class="${activeUri=='emplist'?'nav-link active':'nav-link'}">
+                    <span class="iconfont icon-employee"></span>
+                    基本信息管理
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/skilllist}"
+                   th:class="${activeUri=='skill'?'nav-link active':'nav-link'}">
+                    <span class="iconfont icon-xinzi"></span>
+                    人才信息管理
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/data}"
+                   th:class="${activeUri=='data'?'nav-link active':'nav-link'}">
+                    <span class="iconfont icon-home"></span>
+                    资料下载中心
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/noticelist}"
+                   th:class="${activeUri=='notice'?'nav-link active':'nav-link'}">
+                    <span class="iconfont icon-home"></span>
+                    公告管理
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.5.0/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/popper.js/1.14.3/popper.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.js}"></script>
+</body>
+</html>

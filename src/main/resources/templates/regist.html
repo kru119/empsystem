@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>登录</title>
+        <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+        <link href="asserts/css/signin.css" th:href="@{asserts/css/signin.css}" rel="stylesheet">
+        <link th:href="@{/iconfont/iconfont.css}" rel="stylesheet">
+    <style>
+        .wd {
+            width:330px;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+    </head>
+    <body class="text-center">
+        <form class="form-signin wd" th:action="@{/user/regist}" method="post">
+            <span class="iconfont icon-login_user"></span>
+            <p style="color: red" th:text="${rgmsg}" th:if="${not #strings.isEmpty(rgmsg)}"></p>
+            <label class="sr-only">用户名</label>
+            <input type="text"  name="username" class="form-control" placeholder="Username" required="" autofocus="">
+            <label class="sr-only">密码</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+            <a th:href="@{/gologin}" class="btn btn-lg btn-primary btn-block">去登陆</a>
+        </form>
+
+    </body>
+</html>

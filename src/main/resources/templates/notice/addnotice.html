@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>人才管理系统</title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+
+    <link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+    <link href="iconfont/iconfont.css" th:href="@{/iconfont/iconfont.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="nav/bar::topbar"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="nav/bar::#sidebartwo(activeUri='noticelist')"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/notice}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${notice!=null}"/>
+                <input type="hidden" name="id" th:if="${notice!=null}" th:value="${notice.id}">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input name="title" type="text" class="form-control" placeholder="xiaohong" th:value="${notice!=null}?${notice.title}">
+                </div>
+                <div class="form-group">
+                    <label>内容</label><br/>
+                    <input name="content" id="age" type="textarea" class="form-control" placeholder="35" th:value="${notice!=null}?${notice.content}">
+                </div>
+                <div class="form-group">
+                    <label>发布时间</label>
+                    <input name="time" type="text" class="form-control" placeholder="1999-02-15" th:value="${notice!=null}?${#dates.format(notice.time, 'yyyy-MM-dd')}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${notice!=null}?'修改':'添加'">添加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.5.0/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/popper.js/1.14.3/dist/popper.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.1-1/js/bootstrap.js}"></script>
+
+</body>
+</html>

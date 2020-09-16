@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>人才管理系统</title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+
+    <link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+    <link href="iconfont/iconfont.css" th:href="@{/iconfont/iconfont.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="nav/bar::topbar"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="nav/bar::#sidebartwo(activeUri='skilllist')"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/skill}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${skill!=null}"/>
+                <input type="hidden" name="id" th:if="${skill!=null}" th:value="${skill.id}">
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input name="name" type="text" class="form-control" placeholder="xiaohong" th:value="${skill!=null}?${skill.name}">
+                </div>
+                <div class="form-group">
+                    <label>学校</label><br/>
+                    <input name="school" id="school" type="text" class="form-control" th:value="${skill!=null}?${skill.school}">
+                </div>
+                <div class="form-group">
+                    <label>学历</label>
+                    <input name="grade" type="grade" class="form-control" placeholder="" th:value="${skill!=null}?${skill.grade}">
+                </div>
+                <div class="form-group">
+                    <label>卓出经历</label>
+                    <input name="goodat" id="goodat" type="text" class="form-control" placeholder="" th:value="${skill!=null}?${skill.goodat}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${skill!=null}?'修改':'添加'">添加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.5.0/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/popper.js/1.14.3/dist/popper.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.1-1/js/bootstrap.js}"></script>
+
+</body>
+</html>
